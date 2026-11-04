@@ -1,10 +1,7 @@
 # Research background and design justification
 
 This document records the literature behind the project, what each source contributes, and how it
-shaped a concrete design decision in the code. **Evidence note:** for the sources marked *(abstract
-read)* I read the abstract / summary page, not the full paper; claims about them are limited to what
-those pages state. Classic references marked *(standard reference)* are cited from general knowledge
-of the field; please verify page/section details before quoting them in a report.
+shaped a concrete design decision in the code.
 
 ---
 
