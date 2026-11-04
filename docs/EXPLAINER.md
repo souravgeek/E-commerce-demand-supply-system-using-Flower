@@ -1,4 +1,4 @@
-# Explainer: how the system works, file by file (for demo and viva)
+# Explainer: how the system works
 
 ## 1. One-minute story
 
@@ -81,30 +81,7 @@ python scripts/compare.py --fl fedavg --rounds 5       # 3. table: naive/local/c
 ```
 Then open `results/comparison.png` and point to the worst-store bar.
 
-## 6. Likely viva questions and answers
-
-1. **Why federated learning here?** Stores cannot or will not share raw sales; FL shares only model
-   updates. Local-only models are data-poor; pooling is not allowed.
-2. **Why is the data non-IID and does that matter?** Stores differ in size, season, category mix, promo
-   response. Non-IID data makes local updates drift apart, which can slow or bias FedAvg; FedProx limits drift.
-3. **Why weight by `num-examples`?** A store with more data gives a more reliable update; this is FedAvg's definition.
-4. **Is raw data ever sent?** No. Only weights (ArrayRecord) and aggregate metrics (MetricRecord).
-5. **Is it private then?** Not formally. Weights can leak information. Production systems add secure
-   aggregation and differential privacy (Gboard deck; Turazza et al.). See "Extensions".
-6. **Why compare against centralized if you cannot centralize?** It is an upper bound on what the model class can reach with the same data.
-7. **Why a temporal split?** Random splits leak the future into training and inflate accuracy.
-8. **Why WAPE instead of MAPE/RMSE?** MAPE breaks on zero sales; RMSE is dominated by large stores. WAPE is scale-free.
-9. **Why simulate inventory?** Forecast error is not the business objective; cost and service level are.
-10. **Why is σ estimated on training data?** Using test errors would leak the future into the safety stock.
-11. **What does `fraction-train` do?** Fraction of stores sampled per round (partial participation).
-12. **What is `local-epochs` trade-off?** More local work = fewer communication rounds but more drift on non-IID data.
-13. **Why did FedAvg sometimes beat FedProx in cost though FedProx had lower WAPE?** Cost depends on bias and
-    variance of errors on peak days, not only average error; differences were small relative to seed noise (see sweep).
-14. **How would this run on real machines?** Replace the simulation with SuperNodes started on each store's
-    server and point them at a SuperLink; the ClientApp/ServerApp code is unchanged (Flower's Deployment Runtime).
-15. **What are the limitations?** Synthetic data, simulation only, no DP/SecAgg, single-echelon inventory (see RESEARCH.md §4).
-
-## 7. Extensions (pick one for "future work" or extra credit)
+## 6. Future scope
 
 | Extension | Where to hook in | Reference |
 |---|---|---|
