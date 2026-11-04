@@ -1,5 +1,4 @@
-# Federated Demand–Supply Optimization for E-commerce (Flower + PyTorch)
-
+# Federated Demand–Supply Optimization for E-commerce
 > Distributed Analytics course project. Several e-commerce stores / warehouses jointly learn a **demand
 > forecasting model with federated learning (Flower)** *without sharing raw sales data*, then use the
 > forecast to run a **replenishment (inventory) policy**. We measure the effect on both forecast
