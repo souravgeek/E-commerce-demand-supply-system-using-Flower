@@ -56,21 +56,7 @@ machinery. This project contributes a **transparent, reproducible, end-to-end pi
 forecasting *and* an explicit inventory simulation, with controlled heterogeneity and baselines. That
 lets students *see* how a forecasting improvement becomes an operational (cost / service) improvement.
 
-### 2.3 Privacy at production scale
-
-The course slide deck on Gboard (Zheng Xu et al., *Federated Learning of Gboard Language Models with
-Differential Privacy*, arXiv:2305.18465) shows the production recipe: federated learning for data
-minimization, **secure aggregation**, **client update clipping**, **DP noise added to the aggregate**
-(DP-FTRL), device-level privacy accounting, and the observation that **scale** (thousands of clients per
-round) is what makes strong privacy affordable. Bonawitz et al., *Practical Secure Aggregation for
-Privacy-Preserving Machine Learning* (ACM CCS 2017, *standard reference*) is the protocol behind
-"the server only sees the sum of updates". Dwork & Roth, *The Algorithmic Foundations of Differential
-Privacy* (2014, *standard reference*) is the formal background for (ε, δ)-DP.
-
-Our baseline does **not** include these; Section 5 of the README and `docs/EXPLAINER.md` describe the
-extension path, and the code isolates the hooks (client update, server aggregation) where they would go.
-
-### 2.4 Forecasting and inventory theory
+### 2.3 Forecasting and inventory theory
 
 | Source | Used here for |
 |---|---|
