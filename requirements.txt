@@ -1,0 +1,6 @@
+flwr[simulation]>=1.22.0
+torch>=2.2
+numpy>=1.26
+pandas>=2.0
+matplotlib>=3.8
+pytest>=8.0
